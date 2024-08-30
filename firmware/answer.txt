@@ -1,3 +1,20 @@
 Use this file to write your answer to Stage 2 of the firmware tasks.
 
 Question 1:
+CAN data is sent over a two-wire bus which means that it is very simple for different
+electronics (or ECU in vehicles) to communicate with each other. This simple mechanism 
+also allows CAN to use basically any form of wire USB and ethernet. The encoding of
+CAN also uses a high-low differential wiring system which makes it very simple
+on an embedded level to understand. 
+
+CAN also has high-speed standard (ISO 11898-2) which allows for high speed encoding
+or a fault-tolerant (low speed) mode for reliability by using both wires independently
+to encode the same data. However this is slower as instead of measuing the difference of
+two wires, the wire has to fluctuate voltage leading to a slower bitrate. 
+
+From a data point of view, the data is very compact and can be packed as dense
+as possible as required by the user. This allows it to run on very low memory 
+embedded systems and store data quickly with near zero over-head time. 
+
+In essence, CAN is great because it is simple, reliable, and straight forward
+in its method.

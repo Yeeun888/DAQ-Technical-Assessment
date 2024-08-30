@@ -1,7 +1,9 @@
 import net from "net";
 import { WebSocket, WebSocketServer } from "ws";
 
-interface VehicleData {
+import { VDDeque } from "./deque";
+
+export interface VehicleData {
   battery_temperature: number;
   timestamp: number;
 }
@@ -14,15 +16,35 @@ const websocketServer = new WebSocketServer({ port: WS_PORT });
 tcpServer.on("connection", (socket) => {
   console.log("TCP client connected");
 
+  var tempeartureTracker = new VDDeque();
+
   socket.on("data", (msg) => {
     console.log(`Received: ${msg.toString()}`);
 
-    const jsonData: VehicleData = JSON.parse(msg.toString());
+    //Data received validation
+    var jsonData: VehicleData;
+    var client_message: string;
+    try {
+      jsonData = JSON.parse(msg.toString());
+      client_message = msg.toString();
+    } catch (SyntaxError) {
+      console.log("Error handled, extra } removed");
+      jsonData = JSON.parse(msg.toString().substring(0, msg.length - 1))
+      client_message = msg.toString().substring(0, msg.length - 1);
+    }
+
+    tempeartureTracker.addNewData(jsonData);
+    if(tempeartureTracker.lastFiveSecondUnsafeTemperature() > 3) {
+      console.log("(%d) Unsafe Battery Limit Reached")
+    }
+
+    // tempeartureTracker.DEBUGtemperature();
+    // console.log("Count Errors: %d", tempeartureTracker.lastFiveSecondUnsafeTemperature());
 
     // Send JSON over WS to frontend clients
     websocketServer.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(msg.toString());
+        client.send(client_message);
       }
     });
   });

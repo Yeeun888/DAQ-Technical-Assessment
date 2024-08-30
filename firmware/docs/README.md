@@ -44,7 +44,7 @@ As shown in the above diagram, it's worth noting that:
 - Generally, each CAN Frame is defined by `BO`
   - Each signal within that CAN frame is listed under the CAN frame prefixed with `SG_`
 - The CAN Frame ID is defined in decimal as `2364540158` and is unique within the DBC file.
-  - This CAN Frame holds 1 sensor `EngineSpeed` which starts at bit 24 of the 64 bit data payload and has a length of 16 bits.
+  - This CAN Frame holds 1 sensor `EngineSpeed` which starts at bit 24 of the 64 bit data payload and has a length of 16 bits
 - `@1` indicates that these bits are of little endianess and the `+` indicates it is unsigned.
   - Conversely, `@0` would indicate big endianess and a `-` would indicates it is signed.
 - The scale is a multiplier applied to the decimal interpretation of the masked bits to acquire the correct sensor value.
