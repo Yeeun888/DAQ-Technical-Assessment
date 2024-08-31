@@ -35,7 +35,7 @@ tcpServer.on("connection", (socket) => {
 
     tempeartureTracker.addNewData(jsonData);
     if(tempeartureTracker.lastFiveSecondUnsafeTemperature() > 3) {
-      console.log("(%d) Unsafe Battery Limit Reached")
+      console.log("(%d) Unsafe Battery Limit Reached", tempeartureTracker.lastFiveSecondUnsafeTemperature())
     }
 
     // tempeartureTracker.DEBUGtemperature();

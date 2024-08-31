@@ -1,32 +1,54 @@
 .App {
-  text-align: center;
+  text-align: left;
+  background-image: linear-gradient(90deg, #000000, #b02929); 
 }
 
 .App-header {
-  background-color: #000000;
+  /* background-color: #000000; */
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+  height: 100%;
 }
 
 .live-value {
   color: white;
   font-size: calc(100px + 2vmin);
-  padding: 5%;
 }
 
 .redback-logo {
   max-width: calc(200px + 1vmin);
   display: flex;
-  align-self: center;
-  padding-top: 5%;
+  align-self: left;
+  padding-top: 10%
 }
 
 .value-title {
-  font-size: calc(25px + 2vmin);
+  font-size: calc(35px + 2vmin);
+  padding-right: 5%;
+  align-self: left;
 }
 
+.nest-div {
+  display: inline-flex
+}
+
+.left-box {
+  padding-left: 8%;
+  display: inline
+}
+
+.right-box {
+  align-self: center;
+  display: inline
+}
+
+.notes {
+  position: relative;
+  left: 30px;
+  font-size: calc(10px + 0.25vmin);
+}

@@ -155,10 +155,12 @@ function LiveValue( temp : TemperatureProps) {
     );
   }
 }
+
 ```
+In addition, there is a responsive graph I added which displays the temperature since starting the application. 
 ### Retrospect
 - Spend more time on typescript type safety
-- Do more UI changes for code
+- Do more UI changes for code and add pruning to the react MUI graph
 
 ## Cloud
 
